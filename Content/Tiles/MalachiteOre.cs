@@ -6,7 +6,7 @@ using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
-namespace uwumod.Content.Tiles
+namespace Sinister.Content.Tiles
 {
 	public class MalachiteOre : ModTile
 	{

@@ -2,7 +2,7 @@ using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 
-namespace uwumod.Content.Items.Placeable
+namespace Sinister.Content.Items.Placeable
 {
 	public class MalachiteOre : ModItem
 	{
