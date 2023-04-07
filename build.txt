@@ -1,0 +1,3 @@
+displayName = uwumod
+author = ten18a, lostsoul
+version = 0.1
