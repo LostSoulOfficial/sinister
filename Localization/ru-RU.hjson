@@ -1,0 +1,15 @@
+Mods: {
+    Sinister: {
+        ItemName: {
+            MalachiteOre: "Малахитовая руда"
+        }
+        
+        ItemTooltip: {
+            MalachiteOre: "Выглядит сасно!"
+        }
+
+        MapObject: {
+			MalachiteOre: "Малахитовая руда"
+		}
+    }
+}

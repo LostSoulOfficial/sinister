@@ -1,0 +1,15 @@
+Mods: {
+    Sinister: {
+        ItemName: {
+            MalachiteOre: "Malachite ore"
+        }
+        
+        ItemTooltip: {
+            MalachiteOre: "Looks shits!"
+        }
+
+        MapObject: {
+			MalachiteOre: "Malachite ore"
+		}
+    }
+}
