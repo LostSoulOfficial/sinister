@@ -27,12 +27,5 @@ namespace Sinister.Content.NPCs
             NPC.value = Item.buyPrice(0, 0, 1, 0); // Стоимость продажи NPC
             NPC.lavaImmune = true; // NPC не получает урон от лавы
         }
-
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            if (true) {
-                return 8f; // Шанс спавна NPC равен шансу спавна обычного слизня в дневное время, умноженному на 0.5
-            }
-        }
     }
 }
