@@ -29,7 +29,6 @@ namespace Sinister.Content.Items
 			Item.autoReuse = true; // Авто атака.
 			Item.useTurn = true; // Позволяет двигаться во время анимации.
 		}
-
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
