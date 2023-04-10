@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace sinister.Content.Items
+namespace Sinister.Content.Items
 {
 	public class MalachiteSword : ModItem
 	{
