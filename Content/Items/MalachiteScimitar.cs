@@ -5,12 +5,12 @@ using Microsoft.Xna.Framework;
 
 namespace Sinister.Content.Items
 {
-	public class MalachiteSable : ModItem
+	public class MalachiteScimitar : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Malachite sable");
-			Tooltip.SetDefault("This is a Malachite sable.");
+			DisplayName.SetDefault("Malachite scimitar");
+			Tooltip.SetDefault("Forged with love and brilliance");
 		}
 
 		public override void SetDefaults()
