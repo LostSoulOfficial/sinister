@@ -11,25 +11,30 @@ namespace Sinister.Content.Tiles
 	public class MalachiteOre : ModTile
 	{
 		public override void SetStaticDefaults() {
-			TileID.Sets.Ore[Type] = true;
-			Main.tileSpelunker[Type] = true; // The tile will be affected by spelunker highlighting
-			Main.tileOreFinderPriority[Type] = 410; // Metal Detector value, see https://terraria.gamepedia.com/Metal_Detector
-			Main.tileShine2[Type] = true; // Modifies the draw color slightly.
-			Main.tileShine[Type] = 975; // How often tiny dust appear off this tile. Larger is less frequently
-			Main.tileMergeDirt[Type] = true;
-			Main.tileSolid[Type] = true;
-			Main.tileBlockLight[Type] = true;
+			TileID.Sets.Ore[Type] = true; // я ебу?
+			Main.tileTable[Type] = false; // Модель стола.
+			Main.tileNoAttach[Type] = true; // Предотвращает присоединение блоков к этому блоку.
+			Main.tileBlockLight[Type] = true; // Если включено, свет не будет проходить через блок.
+			Main.tileLavaDeath[Type] = false; // Разрушает ли лава блок?
+			Main.tileWaterDeath[Type] = false; // Разрушает ли вода блок?
+			Main.tileCut[Type] = false; // Если включено, плитка может быть уничтожена оружием. 
+			Main.tileSpelunker[Type] = true; // Плитка будет затронута выделением spelunker.
+			Main.tileOreFinderPriority[Type] = 300; // Значение металлодетектора (https://terraria.gamepedia.com/Metal_Detector).
+			Main.tileShine2[Type] = true; // Немного изменяет цвет рисунка.
+			Main.tileShine[Type] = 600; // Как часто с этой плитки появляются мелкие пылинки. Крупнее - реже.
+			Main.tileMergeDirt[Type] = true; // Если включено, блок будет сливаться с грязью.
+			Main.tileSolid[Type] = true; // Солидный блок.
 
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Malachite ore");
 			AddMapEntry(new Color(110, 168, 74), name);
 
 
-			DustType = 84;
+			DustType = 128; // Частицы (https://terraria.fandom.com/wiki/Dust_IDs).
 			ItemDrop = ModContent.ItemType<Items.Placeable.MalachiteOre>();
 			HitSound = SoundID.Tink;
-			// MineResist = 4f;
-			// MinPick = 200;
+			MineResist = 700f; // Минимальная глубина появления руды.
+			MinPick = 55; // Минимальная мощность кирки (https://terraria.fandom.com/wiki/Pickaxes)
 		}
 	}
 
@@ -74,7 +79,7 @@ namespace Sinister.Content.Tiles
 				// Feel free to experiment with strength and step to see the shape they generate.
 				Tile tile = Framing.GetTileSafely(x, y);
 				if (tile.HasTile && tile.TileType == TileID.Stone) {
-					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 6), WorldGen.genRand.Next(2, 6), ModContent.TileType<MalachiteOre>());
+					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(4, 5), ModContent.TileType<MalachiteOre>());
 				}
 
 				// Alternately, we could check the tile already present in the coordinate we are interested.
