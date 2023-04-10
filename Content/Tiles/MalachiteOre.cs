@@ -21,6 +21,7 @@ namespace Sinister.Content.Tiles
 			Main.tileBlockLight[Type] = true;
 
 			ModTranslation name = CreateMapEntryName();
+			name.SetDefault("Malachite ore");
 			AddMapEntry(new Color(110, 168, 74), name);
 
 
