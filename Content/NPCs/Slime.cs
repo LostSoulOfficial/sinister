@@ -30,8 +30,10 @@ namespace Sinister.Content.NPCs
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (true) {
-                return 0.5f; // Шанс спавна NPC равен шансу спавна обычного слизня в дневное время, умноженному на 0.5
+            if (spawnInfo.Player.ZoneRockLayerHeight && spawnInfo.Player.ZoneJungle && !spawnInfo.Lihzahrd && spawnInfo.SpawnTileType != TileID.LihzahrdBrick) {
+                return 0.1f; // Шанс спавна NPC равен шансу спавна обычного слизня в дневное время, умноженному на 0.1
+            } else {
+                return 0;
             }
         }
     }
