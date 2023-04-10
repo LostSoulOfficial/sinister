@@ -14,8 +14,8 @@ namespace Sinister.Content.NPCs
 
         public override void SetDefaults()
         {
-            NPC.width = 30; // Ширина NPC
-            NPC.height = 48; // Высота NPC
+            NPC.width = 32; // Ширина NPC
+            NPC.height = 52; // Высота NPC
             NPC.damage = 6; // Урон NPC
             NPC.defense = 2; // Защита NPC
             NPC.lifeMax = 20; // Максимальное количество здоровья NPC
