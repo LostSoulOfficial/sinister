@@ -33,7 +33,7 @@ namespace Sinister.Content.Tiles
 			DustType = 128; // Частицы (https://terraria.fandom.com/wiki/Dust_IDs).
 			ItemDrop = ModContent.ItemType<Items.Placeable.MalachiteOre>();
 			HitSound = SoundID.Tink;
-			MineResist = 700f; // Минимальная глубина появления руды.
+			// MineResist = 700f; // Не ебу.
 			MinPick = 55; // Минимальная мощность кирки (https://terraria.fandom.com/wiki/Pickaxes)
 		}
 	}
@@ -41,15 +41,15 @@ namespace Sinister.Content.Tiles
 	public class MalachiteOreSystem : ModSystem
 	{
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight) {
-			// Because world generation is like layering several images ontop of each other, we need to do some steps between the original world generation steps.
+			// Поскольку генерация мира похожа на наложение нескольких изображений друг на друга, нам нужно сделать несколько шагов между первоначальными шагами генерации мира.
 
-			// The first step is an Ore. Most vanilla ores are generated in a step called "Shinies", so for maximum compatibility, we will also do this.
-			// First, we find out which step "Shinies" is.
+			// Первый шаг - это руда. Большинство ванильных руд генерируются на шаге под названием "Shinies", поэтому для максимальной совместимости мы также сделаем это.
+			// Сначала мы выясним, на каком этапе находится "Shinies".
 			int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
 
 			if (ShiniesIndex != -1) {
-				// Next, we insert our pass directly after the original "Shinies" pass.
-				// ExampleOrePass is a class seen bellow
+				// Далее мы вставляем наш пасс непосредственно после оригинального пасса "Shinies".
+				// ExampleOrePass - это класс, показанный ниже.
 				tasks.Insert(ShiniesIndex + 1, new MalachiteOrePass("Example Mod Ores", 237.4298f));
 			}
 		}
@@ -61,29 +61,30 @@ namespace Sinister.Content.Tiles
 		}
 
 		protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration) {
-			// progress.Message is the message shown to the user while the following code is running.
-			// Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
+			// progress.Message - это сообщение, показываемое пользователю во время выполнения следующего кода.
+			// Постарайтесь, чтобы ваше сообщение было понятным. Вы можете быть немного умными, но убедитесь, что оно достаточно описательно для целей поиска и устранения неисправностей.
 			progress.Message = "Example Mod Ores";
 
-			// Ores are quite simple, we simply use a for loop and the WorldGen.TileRunner to place splotches of the specified Tile in the world.
-			// "6E-05" is "scientific notation". It simply means 0.00006 but in some ways is easier to read.
+			// Руды довольно просты, мы просто используем цикл for и WorldGen.TileRunner для размещения пятен указанной плитки в мире.
+			// "6E-05" - это "научная нотация". Она просто означает 0,00006, но в некотором смысле ее легче читать.
 			for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++) {
-				// The inside of this for loop corresponds to one single splotch of our Ore.
-				// First, we randomly choose any coordinate in the world by choosing a random x and y value.
+				// Внутренняя часть этого цикла for соответствует одному пятну нашего Ore.
+				// Сначала мы случайным образом выбираем любую координату в мире, выбирая случайные значения x и y.
 				int x = WorldGen.genRand.Next(0, Main.maxTilesX);
 
-				// WorldGen.worldSurfaceLow is actually the highest surface tile. In practice you might want to use WorldGen.rockLayer or other WorldGen values.
+				// WorldGen.worldSurfaceLow - это фактически самая высокая плитка поверхности. На практике вы можете захотеть использовать WorldGen.rockLayer или другие значения WorldGen.
 				int y = WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY);
 
-				// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place.
-				// Feel free to experiment with strength and step to see the shape they generate.
+				// Затем мы вызываем WorldGen.TileRunner со случайной "силой" и случайным "шагом", а также плитку, которую мы хотим разместить.
+				// Не стесняйтесь экспериментировать с силой и шагом, чтобы увидеть, какую форму они генерируют.
 				Tile tile = Framing.GetTileSafely(x, y);
 				if (tile.HasTile && tile.TileType == TileID.Stone) {
 					WorldGen.TileRunner(x, y, WorldGen.genRand.Next(3, 4), WorldGen.genRand.Next(4, 5), ModContent.TileType<MalachiteOre>());
 				}
 
-				// Alternately, we could check the tile already present in the coordinate we are interested.
-				// Wrapping WorldGen.TileRunner in the following condition would make the ore only generate in Snow.
+				// Альтернативно, мы можем проверить плитку, уже присутствующую в интересующей нас координате.
+				// Обернув WorldGen.TileRunner в следующее условие, мы заставим руду генерироваться только в Snow.
+
 				// Tile tile = Framing.GetTileSafely(x, y);
 				// if (tile.HasTile && tile.TileType == TileID.SnowBlock) {
 				// 	WorldGen.TileRunner(.....);
