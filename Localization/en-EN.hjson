@@ -1,11 +1,13 @@
 Mods: {
     Sinister: {
         ItemName: {
+            MalachiteSable: "Malachite sable"
             MalachiteOre: "Malachite ore"
         }
         
         ItemTooltip: {
-            MalachiteOre: "Looks shits!"
+            MalachiteSable: "REWRITE THIS!!!!"
+            MalachiteOre: "REWRITE THIS!!!!"
         }
 
         MapObject: {
